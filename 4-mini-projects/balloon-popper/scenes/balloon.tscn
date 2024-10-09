@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://csn0smyvol1le"]
+
+[ext_resource type="Script" path="res://balloon-popper/scenes/balloon.gd" id="1_alaac"]
+[ext_resource type="Material" uid="uid://bko7bmqgmq4jc" path="res://balloon-popper/balloon.tres" id="2_4cpd5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pwe61"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyre7"]
+albedo_color = Color(1, 0, 0, 1)
+roughness = 0.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kh0fy"]
+radius = 0.501149
+
+[node name="Balloon" type="Area3D"]
+script = ExtResource("1_alaac")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_4cpd5")
+mesh = SubResource("SphereMesh_pwe61")
+surface_material_override/0 = SubResource("StandardMaterial3D_pyre7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_kh0fy")
+metadata/_edit_group_ = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
