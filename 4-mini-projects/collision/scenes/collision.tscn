@@ -1,0 +1,140 @@
+[gd_scene load_steps=16 format=3 uid="uid://c34nylat7e8bw"]
+
+[ext_resource type="Script" path="res://collision/scenes/rigid_body_3d.gd" id="1_mxjt6"]
+[ext_resource type="PackedScene" uid="uid://c81ghx8cbcsui" path="res://collision/scenes/tree.tscn" id="2_wwwvm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_aik16"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vsbhg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q3clr"]
+friction = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_mdxla"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lib0e"]
+albedo_color = Color(1, 0.733333, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_yeqh1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfn38"]
+albedo_color = Color(0.9, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ic6h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2svf"]
+albedo_color = Color(0, 0.766667, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rqxuk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twxld"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bca53"]
+
+[sub_resource type="Environment" id="Environment_310a0"]
+background_mode = 1
+background_color = Color(0, 0.706667, 0.8, 1)
+
+[node name="Main" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(12, 0, 0, 0, 0.281908, 10.2606, 0, -0.102606, 28.1908, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_aik16")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_vsbhg")
+
+[node name="Player" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.379647, 5.12145, 12.1092)
+physics_material_override = SubResource("PhysicsMaterial_q3clr")
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_mxjt6")
+
+[node name="Hair" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(0.454502, 0, 0, 0, 0.0886444, -0.42098, 0, 0.0697537, 0.53499, 0, 2.21105, 0.139502)
+mesh = SubResource("BoxMesh_mdxla")
+surface_material_override/0 = SubResource("StandardMaterial3D_lib0e")
+
+[node name="Head" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(0.768284, 0, 0, 0, 0.768284, 0, 0, 0, 0.768284, 0, 2.038, -0.231)
+mesh = SubResource("SphereMesh_yeqh1")
+surface_material_override/0 = SubResource("StandardMaterial3D_pfn38")
+
+[node name="Body" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(0.595077, 0, 0, 0, 0.951446, 0, 0, 0, 0.528404, 0, 1.31304, -0.110713)
+mesh = SubResource("BoxMesh_6ic6h")
+surface_material_override/0 = SubResource("StandardMaterial3D_l2svf")
+
+[node name="Ski" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(0.176153, 0, 0, 0, 0.137826, 0, 0, 0, 1.57659, 0.250964, 0.886914, -0.286445)
+mesh = SubResource("BoxMesh_rqxuk")
+surface_material_override/0 = SubResource("StandardMaterial3D_twxld")
+
+[node name="Ski2" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(0.176153, 0, 0, 0, 0.137826, 0, 0, 0, 1.57659, -0.246866, 0.886914, -0.286445)
+mesh = SubResource("BoxMesh_rqxuk")
+surface_material_override/0 = SubResource("StandardMaterial3D_twxld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31073, 0)
+shape = SubResource("BoxShape3D_bca53")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.810594, 0.585609, 0, -0.585609, 0.810594, 0, 4.14472, 2.80579)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.236702, 0.971582, 0, -0.971582, 0.236702, 0, 7.67436, 4.89527)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_310a0")
+
+[node name="Tree" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.93089, -1.63876, 0.456885)
+
+[node name="Tree2" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94748, -2.13759, -0.854668)
+
+[node name="Tree3" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75799, -3.24505, -3.73852)
+
+[node name="Tree4" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44483, -3.72519, -5.4309)
+
+[node name="Tree5" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44483, 1.81559, 10.6541)
+
+[node name="Tree6" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40425, 0.465424, 5.43908)
+
+[node name="Tree7" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36498, 0.668821, 5.43908)
+
+[node name="Tree8" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.320717, -0.270488, 2.63144)
+
+[node name="Tree9" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18114, -1.70321, -0.331298)
+
+[node name="Tree10" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.64572, -2.63919, -2.04802)
+
+[node name="Tree11" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8038, -5.74108, -10.636)
+
+[node name="Tree12" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.997481, -5.74108, -10.636)
+
+[node name="Tree13" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77429, -4.64965, -8.13564)
+
+[node name="Tree14" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77364, -4.42034, -6.91886)
+
+[node name="Tree15" parent="." instance=ExtResource("2_wwwvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83938, -5.97619, -12.5143)
+
+[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
