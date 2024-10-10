@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=4 uid="uid://bcbtde6e3mjqe"]
+
+[ext_resource type="TileSet" uid="uid://cgwo5yo48ca85" path="res://assets/tileset.tres" id="1_ra4r3"]
+[ext_resource type="PackedScene" uid="uid://23vvim520a46" path="res://scenes/player.tscn" id="2_lincc"]
+[ext_resource type="PackedScene" uid="uid://d01kvo7q13axd" path="res://scenes/enemy.tscn" id="4_3aj1v"]
+[ext_resource type="PackedScene" uid="uid://ca0b00tni2i33" path="res://scenes/spike.tscn" id="5_7b01v"]
+[ext_resource type="PackedScene" uid="uid://dmirpi81785uv" path="res://scenes/coin.tscn" id="6_wewq0"]
+[ext_resource type="PackedScene" uid="uid://4da6gcregu0d" path="res://scenes/end_flag.tscn" id="7_elwbt"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Foreground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD7/wAAAAABAAEAAAD8/wAAAAACAAEAAAD9/wAAAAACAAEAAAD+/wAAAAACAAEAAAD//wAAAAACAAEAAAAAAAAAAAACAAEAAAABAAAAAAACAAEAAAACAAAAAAACAAEAAAADAAAAAAACAAYAAAAEAAAAAAADAAYAAAD7/wEAAAABAAYAAAD8/wEAAAACAAYAAAD9/wEAAAACAAYAAAD+/wEAAAACAAYAAAD//wEAAAACAAYAAAAAAAEAAAACAAYAAAABAAEAAAACAAYAAAACAAEAAAACAAYAAAADAAEAAAACAAYAAAAEAAEAAAADAAYAAAAEAAIAAAADAAYAAAAEAAMAAAADAAYAAAADAAMAAAACAAYAAAACAAMAAAACAAYAAAACAAIAAAACAAYAAAADAAIAAAACAAYAAAABAAIAAAACAAYAAAAAAAIAAAACAAYAAAAAAAMAAAACAAYAAAABAAMAAAACAAYAAAD//wMAAAACAAYAAAD+/wMAAAACAAYAAAD+/wIAAAACAAYAAAD//wIAAAACAAYAAAD9/wIAAAACAAYAAAD9/wMAAAACAAYAAAD8/wMAAAACAAYAAAD8/wIAAAACAAYAAAD7/wIAAAABAAYAAAD7/wMAAAABAAYAAAAHAAAAAAABAAEAAAAIAAAAAAACAAEAAAAJAAAAAAADAAEAAAAHAAEAAAABAAYAAAAIAAEAAAACAAYAAAAJAAEAAAADAAYAAAAJAAIAAAADAAYAAAAIAAIAAAACAAYAAAAHAAIAAAABAAYAAAANAAAAAAAMAAYAAAAOAAAAAAANAAYAAAAPAAAAAAANAAYAAAAQAAAAAAANAAYAAAARAAAAAAAOAAUAAAARAP//AAAPAAUAAAARAP7/AAANAAQAAAASAP7/AAANAAYAAAATAP7/AAANAAYAAAAUAP7/AAANAAYAAAAVAP7/AAAOAAQAAAAVAP//AAAPAAUAAAAVAAAAAAAPAAUAAAAVAAEAAAAPAAUAAAAVAAIAAAANAAUAAAAWAAIAAAANAAYAAAAYAAIAAAANAAYAAAAZAAIAAAANAAYAAAAXAAIAAAANAAYAAAAaAAIAAAAOAAUAAAAaAAEAAAAPAAUAAAAaAAAAAAANAAQAAAAbAAAAAAANAAYAAAAcAAAAAAANAAYAAAAdAAAAAAANAAYAAAAeAAAAAAAOAAYAAAAEAP7/AAADAAEAAAADAP7/AAABAAEAAAADAP//AAABAAYAAAAEAP//AAADAAYAAAA=")
+tile_set = ExtResource("1_ra4r3")
+
+[node name="Player" parent="." instance=ExtResource("2_lincc")]
+
+[node name="Enemy" parent="." instance=ExtResource("4_3aj1v")]
+position = Vector2(42, -12)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_3aj1v")]
+position = Vector2(108, 1)
+move_speed = 10.0
+move_dir = Vector2(0, -70)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_3aj1v")]
+position = Vector2(165, -12)
+move_speed = 50.0
+move_dir = Vector2(0, -100)
+
+[node name="Spike" parent="." instance=ExtResource("5_7b01v")]
+
+[node name="Spike2" parent="." instance=ExtResource("5_7b01v")]
+position = Vector2(289, -8)
+
+[node name="Spike3" parent="." instance=ExtResource("5_7b01v")]
+position = Vector2(361, -43)
+
+[node name="Spike4" parent="." instance=ExtResource("5_7b01v")]
+position = Vector2(343, -43)
+
+[node name="Coin" parent="." instance=ExtResource("6_wewq0")]
+
+[node name="Coin2" parent="." instance=ExtResource("6_wewq0")]
+position = Vector2(-29, -24)
+
+[node name="Coin3" parent="." instance=ExtResource("6_wewq0")]
+position = Vector2(138, -27)
+
+[node name="Coin4" parent="." instance=ExtResource("6_wewq0")]
+position = Vector2(288, -35)
+
+[node name="Coin5" parent="." instance=ExtResource("6_wewq0")]
+position = Vector2(288, -59)
+
+[node name="Coin6" parent="." instance=ExtResource("6_wewq0")]
+position = Vector2(341, -65)
+
+[node name="Coin7" parent="." instance=ExtResource("6_wewq0")]
+position = Vector2(360, -65)
+
+[node name="EndFlag" parent="." instance=ExtResource("7_elwbt")]
+next_scene = "res://scenes/level2.tscn"
